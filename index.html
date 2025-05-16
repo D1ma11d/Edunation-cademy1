@@ -1,0 +1,1120 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edunation Academy</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Общие стили */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f9f9f9;
+            color: #ffffff;
+        }
+
+        /* Навигация */
+        .navbar {
+            background-color: #2ac216;
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo img {
+            width: 100px;
+            height: 100px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #ffffff;
+            font-size: 16px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #1b5e20;
+        }
+
+        .sign-up-btn {
+            background-color: #1b5e20;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .sign-up-btn:hover {
+            background-color: #2e7d32;
+        }
+
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #fff;
+            min-width: 200px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            top: 100%;
+            left: 0;
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            display: block;
+            padding: 12px 16px;
+            color: #333;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f5f5f5;
+            border-radius: 10px;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown:hover > a {
+            color: #1b5e20;
+        }
+
+        /* Героическая секция */
+        .hero {
+            position: relative;
+            background: linear-gradient(135deg, #e8f5e9 0%, #ffffff 100%);
+            padding: 80px 40px;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 600px;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://www.transparenttextures.com/patterns/white-diamond.png');
+            opacity: 0.1;
+        }
+
+        .hero-container {
+            display: flex;
+            max-width: 1200px;
+            width: 100%;
+            align-items: center;
+            position: relative;
+        }
+
+        .hero-text {
+            flex: 1;
+            text-align: left;
+            padding-right: 40px;
+        }
+
+        .hero-text h1 {
+            font-size: 48px;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            color: #28295e;
+        }
+
+        .hero-text h1 span {
+            color: #28295e;
+        }
+
+        .hero-text p {
+            font-size: 16px;
+            color: #555;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+        }
+
+        .hero-buttons .btn-primary {
+            background-color: #2ac216;
+            color: #fff;
+            padding: 15px 30px;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .hero-buttons .btn-primary:hover {
+            background-color: #2e7d32;
+        }
+
+        .hero-buttons .btn-secondary {
+            color: #333;
+            padding: 15px 30px;
+            border: 2px solid #28295e;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: 500;
+            text-decoration: none;
+        }
+
+        .hero-image {
+            flex: 1;
+            position: relative;
+        }
+
+        .hero-image img {
+            width: 100%;
+            max-width: 500px;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .icon-boxes {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .icon-box {
+            position: absolute;
+            background-color: #fff;
+            padding: 10px 20px;
+            border-radius: 25px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .icon-box img {
+            width: 24px;
+            height: 24px;
+        }
+
+        .icon-box.explore {
+            top: 20px;
+            left: 80px;
+        }
+
+        .icon-box.tour {
+            bottom: 60px;
+            right: 70px;
+        }
+
+        /* Анимации для героя */
+        .animate {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 1s forwards;
+        }
+
+        .animate:nth-child(1) {
+            animation-delay: 0.2s;
+        }
+
+        .animate:nth-child(2) {
+            animation-delay: 0.4s;
+        }
+
+        .animate:nth-child(3) {
+            animation-delay: 0.6s;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Секция предметов */
+        .subjects {
+            padding: 60px 40px;
+            text-align: center;
+            background-color: #f9f9f9;
+        }
+
+        .subjects h2 {
+            font-size: 36px;
+            margin-bottom: 40px;
+            color: #28295e;
+        }
+
+        .subjects-container {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(250px, 1fr));
+            gap: 20px;
+            justify-content: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .subject-card {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .subject-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .subject-card img {
+            width: 240px;
+            height: 130px;
+            margin-bottom: 10px;
+            border-radius: 20px;
+        }
+
+        .subject-card h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: #28295e;
+        }
+
+        .subject-card p {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .subject-card .btn-primary {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #2ac216;
+            color: #28295e;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            transition: background-color 0.3s;
+            border: 1px solid #2ac216;
+            background-color: transparent;
+        }
+
+        .subject-card .btn-primary:hover {
+            background-color: #2ac216;
+            color: #ffffff;
+        }
+
+        /* Секция "О нас" */
+        .about {
+            padding: 60px 40px;
+            text-align: center;
+            background-color: #fff;
+            scroll-margin-top: 100px;
+        }
+
+        .about h2 {
+            font-size: 36px;
+            margin-bottom: 40px;
+            color: #28295e;
+        }
+
+        .about-container {
+            display: flex;
+            max-width: 1200px;
+            width: 100%;
+            align-items: center;
+            margin: 0 auto;
+        }
+
+        .about-text {
+            flex: 1;
+            text-align: left;
+            padding-right: 40px;
+        }
+
+        .about-text h2 {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .about-text p {
+            font-size: 16px;
+            color: #555;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .about-image {
+            flex: 1;
+        }
+
+        .about-image img {
+            width: 100%;
+            max-width: 500px;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Анимации */
+        .animate {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 1s forwards;
+        }
+
+        .animate:nth-child(1) {
+            animation-delay: 0.24s;
+        }
+
+        .animate:nth-child(2) {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Галерея */
+        .gallery {
+            padding: 60px 40px;
+            text-align: center;
+            scroll-margin-top: 80px;
+            background-color: #fff;
+        }
+
+        .gallery h2 {
+            font-size: 36px;
+            margin-bottom: 40px;
+            color: #28295e;
+        }
+
+        .gallery-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery-container img {
+            width: 80%;
+            border-radius: 10px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .gallery-container img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Контакты */
+        .contacts {
+            padding: 60px 40px;
+            text-align: center;
+            background-color: #f9f9f9;
+            scroll-margin-top: 80px;
+        }
+
+        .contacts h2 {
+            font-size: 36px;
+            margin-bottom: 40px;
+            color: #1b5e20;
+        }
+
+        .contact-form {
+            max-width: 500px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            padding: 15px;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            border-color: #1b5e20;
+            outline: none;
+        }
+
+        .contact-form textarea {
+            height: 150px;
+            resize: vertical;
+        }
+
+        .contact-form .btn-primary {
+            padding: 15px;
+            cursor: pointer;
+            background-color: #1b5e20;
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        .contact-form .btn-primary:hover {
+            background-color: #2e7d32;
+        }
+
+        .social-links {
+            margin-top: 20px;
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .social-links a {
+            color: #1b5e20;
+            font-size: 16px;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: #2e7d32;
+        }
+
+        /* Футер */
+        .footer {
+            background: linear-gradient(#2e7d32 0%, #2ac216 100%);
+            color: #fff;
+            padding: 40px 40px;
+            text-align: center;
+        }
+
+        .footer-container {
+            display: flex;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .footer-info h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .footer-info p {
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .footer-links a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #e8f5e9;
+        }
+
+        .footer-copy {
+            margin-top: 20px;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .footer-copy img {
+            width: 50px;
+            height: 50px;
+            border-radius: 25px;
+        }
+
+        /* Адаптация для планшетов */
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 15px 20px;
+            }
+
+            .logo img {
+                width: 80px;
+                height: 80px;
+            }
+
+            .nav-links {
+                gap: 10px;
+                flex-wrap: wrap;
+            }
+
+            .nav-links a {
+                font-size: 14px;
+            }
+
+            .sign-up-btn {
+                padding: 8px 16px;
+                font-size: 12px;
+            }
+
+            .hero {
+                padding: 40px 20px;
+                min-height: 500px; /* Уменьшаем высоту для планшетов */
+            }
+
+            .hero-container {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .hero-text {
+                padding-right: 0;
+                margin-bottom: 20px;
+            }
+
+            .hero-text h1 {
+                font-size: 36px;
+            }
+
+            .hero-text p {
+                font-size: 14px;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px; /* Увеличиваем расстояние между кнопками */
+            }
+
+            .hero-buttons .btn-primary,
+            .hero-buttons .btn-secondary {
+                width: 100%;
+                max-width: 300px;
+                min-width: 250px; /* Минимальная ширина кнопок */
+                padding: 12px;
+                font-size: 15px; /* Чуть больше для читаемости */
+            }
+
+            .hero-image img {
+                max-width: 300px;
+            }
+
+            .icon-box {
+                font-size: 12px;
+                padding: 8px 16px;
+            }
+
+            .icon-box img {
+                width: 20px;
+                height: 20px;
+            }
+
+            .subjects {
+                padding: 40px 20px;
+            }
+
+            .subjects h2 {
+                font-size: 28px;
+            }
+
+            .subjects-container {
+                grid-template-columns: repeat(2, minmax(150px, 1fr));
+                gap: 15px;
+            }
+
+            .subject-card {
+                padding: 15px;
+            }
+
+            .subject-card h3 {
+                font-size: 18px;
+            }
+
+            .subject-card p {
+                font-size: 13px;
+            }
+
+            .subject-card .btn-primary {
+                padding: 8px 16px;
+                font-size: 14px; /* Увеличиваем для читаемости */
+            }
+
+            .gallery {
+                padding: 40px 20px;
+            }
+
+            .gallery h2 {
+                font-size: 28px;
+            }
+
+            .gallery-container {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            .about {
+                padding: 40px 20px;
+                scroll-margin-top: 90px;
+            }
+
+            .about h2 {
+                font-size: 28px;
+            }
+
+            .about-container {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .about-text {
+                padding-right: 0;
+                margin-bottom: 20px;
+            }
+
+            .about-text h2 {
+                font-size: 36px;
+            }
+
+            .about-text p {
+                font-size: 14px;
+            }
+
+            .about-image img {
+                max-width: 300px;
+            }
+
+            .contacts {
+                padding: 40px 20px;
+            }
+
+            .contacts h2 {
+                font-size: 28px;
+            }
+
+            .contact-form {
+                max-width: 100%;
+            }
+
+            .contact-form input,
+            .contact-form textarea {
+                padding: 12px;
+                font-size: 14px;
+            }
+
+            .contact-form .btn-primary {
+                padding: 12px;
+                font-size: 14px;
+            }
+
+            .social-links a {
+                font-size: 14px;
+            }
+
+            .footer {
+                padding: 30px 20px;
+            }
+
+            .footer-info h3 {
+                font-size: 20px;
+            }
+
+            .footer-info p,
+            .footer-links a {
+                font-size: 13px;
+            }
+
+            .whatsapp-btn {
+                bottom: 15px;
+                right: 15px;
+                padding: 8px;
+            }
+
+            .whatsapp-btn img {
+                width: 36px;
+                height: 36px;
+            }
+        }
+
+        /* Адаптация для узких экранов (телефоны) */
+        @media (max-width: 480px) {
+            .navbar {
+                padding: 10px 15px;
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .logo img {
+                width: 60px;
+                height: 60px;
+            }
+
+            .nav-links {
+                margin-top: 10px;
+                gap: 8px;
+                width: 100%;
+                justify-content: space-between;
+            }
+
+            .nav-links a {
+                font-size: 12px;
+            }
+
+            .sign-up-btn {
+                padding: 6px 12px;
+                font-size: 11px;
+            }
+
+            .dropdown-content {
+                min-width: 150px;
+            }
+
+            .dropdown-content a {
+                font-size: 12px;
+                padding: 10px 12px;
+            }
+
+            .hero {
+                padding: 30px 15px;
+                min-height: 400px; /* Уменьшаем высоту для телефонов */
+            }
+
+            .hero-text h1 {
+                font-size: 28px;
+            }
+
+            .hero-text p {
+                font-size: 13px;
+                margin-bottom: 20px;
+            }
+
+            .hero-buttons .btn-primary,
+            .hero-buttons .btn-secondary {
+                padding: 10px;
+                font-size: 14px; /* Увеличиваем для читаемости */
+                min-width: 220px; /* Минимальная ширина кнопок */
+            }
+
+            .hero-image img {
+                max-width: 250px;
+            }
+
+            .icon-box {
+                font-size: 11px;
+                padding: 6px 12px;
+            }
+
+            .icon-box img {
+                width: 18px;
+                height: 18px;
+            }
+
+            .icon-box.explore {
+                top: 10px;
+                left: 10px;
+            }
+
+            .icon-box.tour {
+                bottom: 40px;
+                right: 10px;
+            }
+
+            .subjects {
+                padding: 30px 15px;
+            }
+
+            .subjects h2 {
+                font-size: 24px;
+            }
+
+            .subjects-container {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+
+            .subject-card {
+                max-width: 280px;
+                margin: 0 auto;
+            }
+
+            .gallery {
+                padding: 30px 15px;
+            }
+
+            .gallery h2 {
+                font-size: 24px;
+            }
+
+            .about {
+                padding: 30px 15px;
+                scroll-margin-top: 80px;
+            }
+
+            .about h2 {
+                font-size: 24px;
+            }
+
+            .about-text h2 {
+                font-size: 28px;
+            }
+
+            .about-text p {
+                font-size: 13px;
+            }
+
+            .about-image img {
+                max-width: 250px;
+            }
+
+            .contacts {
+                padding: 30px 15px;
+            }
+
+            .contacts h2 {
+                font-size: 24px;
+            }
+
+            .contact-form input,
+            .contact-form textarea {
+                padding: 10px;
+                font-size: 13px;
+            }
+
+            .contact-form .btn-primary {
+                padding: 10px;
+                font-size: 13px;
+            }
+
+            .footer {
+                padding: 20px 15px;
+            }
+
+            .footer-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .footer-info,
+            .footer-links {
+                text-align: center;
+            }
+
+            .whatsapp-btn {
+                bottom: 10px;
+                right: 10px;
+            }
+
+            .whatsapp-btn img {
+                width: 32px;
+                height: 32px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Навигация -->
+    <nav class="navbar">
+        <div class="logo">Edunation<span> Аca</span>demy</div>
+        <div class="nav-links">
+            <a href="#about">О нас</a>
+            <div class="dropdown">
+                <a href="#">Варианты обучения</a>
+                <div class="dropdown-content">
+                    <a href="#">Русский</a>
+                    <a href="#">Английский</a>
+                    <a href="#">Биология</a>
+                    <a href="#">Химия</a>
+                    <a href="#">IT</a>
+                    <a href="#">Қазақ тілі</a>
+                </div>
+            </div>
+            <a href="#gallery">Галерея</a>
+            <a href="#contacts">Контакты</a>
+        </div>
+    </nav>
+
+    <!-- Героическая секция -->
+    <div class="hero">
+        <div class="hero-container">
+            <div class="hero-text">
+                <h1 class="animate">НАУЧИМ ВАШЕГО <span>РЕБЁНКА</span></h1>
+                <p class="animate">С НУЛЯ ДО СВОБОДНОГО ВЛАДЕНИЯ ЯЗЫКОМ</p>
+                <div class="hero-buttons animate">
+                    <a href="#" class="btn-primary">БЕСПЛАТНЫЙ УРОК</a>
+                    <a href="https://wa.me/77785112060" class="btn-secondary">ЗАПИСАТЬСЯ НА УРОК</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img style="width: 350px; height: 340px; border-radius: 250px;" src="fon.jpg" alt="Classroom">
+                <div class="icon-boxes">
+                    <div class="icon-box explore">
+                        <img src="inter.png" alt="Location Icon">
+                        Казахстан
+                    </div>
+                    <div class="icon-box tour">
+                        <img src="car.avif" alt="Home Icon">
+                        Беловод
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Секция предметов -->
+    <section class="subjects">
+        <h2>Наши предметы</h2>
+        <div class="subjects-container">
+            <div class="subject-card">
+                <img src="ruskiy.jpeg" alt="Русский">
+                <h3>Русский</h3>
+                <p>Учим грамотной речи и письму с нуля!</p>
+                <a href="#" class="btn-primary">Записаться</a>
+            </div>
+            <div class="subject-card">
+                <img src="angil.jpeg" alt="Английский">
+                <h3>Английский</h3>
+                <p>Свободное владение языком для детей!</p>
+                <a href="#" class="btn-primary">Записаться</a>
+            </div>
+            <div class="subject-card">
+                <img src="himya.jpeg" alt="Химия">
+                <h3>Химия</h3>
+                <p>Эксперименты и основы химии для детей!</p>
+                <a href="#" class="btn-primary">Записаться</a>
+            </div>
+            <div class="subject-card">
+                <img src="biologiya.jpeg" alt="Биология">
+                <h3>Биология</h3>
+                <p>Изучаем природу и живые организмы!</p>
+                <a href="#" class="btn-primary">Записаться</a>
+            </div>
+            <div class="subject-card">
+                <img src="IT.jpeg" alt="IT">
+                <h3>IT</h3>
+                <p>Программирование и технологии будущего!</p>
+                <a href="#" class="btn-primary">Записаться</a>
+            </div>
+            <div class="subject-card">
+                <img src="qazaq.jpeg" alt="Қазақ тілі">
+                <h3>Қазақ тілі</h3>
+                <p>Изучаем казахский язык с нуля!</p>
+                <a href="#" class="btn-primary">Записаться</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Секция "О нас" -->
+    <section class="about" id="about">
+        <h2>О нас</h2>
+        <div class="about-container">
+            <div class="about-text">
+                <h2 class="animate">Edunation Academy</h2>
+                <p class="animate">Мы — образовательный центр, который помогает детям раскрыть свой потенциал через изучение языков, наук и современных технологий. Наши опытные преподаватели создают увлекательные уроки, чтобы каждый ребёнок учился с радостью и достиг успехов!</p>
+            </div>
+            <div class="about-image">
+                <img style="border-radius: 300px; height: 372px; width: 368px;" src="image.jpg" alt="Our Team">
+            </div>
+        </div>
+    </section>
+
+    <!-- Галерея -->
+    <section class="gallery" id="gallery">
+        <h2>Галерея</h2>
+        <div class="gallery-container">
+            <img style="margin-left: 35px;" src="j1.jpeg" alt="Класс">
+            <img style="height: 220px; margin-left: 35px;" src="j3.jpeg" alt="Учитель">
+            <img style="margin-left: 35px;" src="j4.jpeg" alt="Мероприятие">
+        </div>
+    </section>
+
+    <!-- Контакты -->
+    <section class="contacts" id="contacts">
+        <h2>Контакты</h2>
+        <div class="contact-form">
+            <input type="text" placeholder="Ваше имя" required>
+            <input type="email" placeholder="Ваш email" required>
+            <textarea placeholder="Ваше сообщение" required></textarea>
+            <button class="btn-primary">Отправить</button>
+        </div>
+        <div class="social-links">
+            <a href="#">Facebook</a>
+            <a href="#">Instagram</a>
+            <a href="#">Telegram</a>
+        </div>
+    </section>
+
+    <!-- Футер -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-info">
+                <h3>Edunation Academy</h3>
+                <p>Казахстан, Беловод</p>
+                <p>Телефон: +7 (123) 456-78-90</p>
+            </div>
+            <div class="footer-links">
+                <a href="#about">О нас</a>
+                <a href="#gallery">Галерея</a>
+                <a href="#contacts">Контакты</a>
+            </div>
+        </div>
+        <p class="footer-copy">
+            <img src="fon2.jpg" alt="Edunation Academy Logo">
+            © 2025 Edunation Academy
+        </p>
+    </footer>
+</body>
+</html>ы
